@@ -11,6 +11,9 @@ pandas = "^1.4.1"
 matplotlib = "^3.5.1"
 seaborn = "^0.11.2"
 pyarrow = "^8.0.0"
+mlflow = "^1.26.0"
+protobuf = "3.20"
+hyperopt = "^0.2.7"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

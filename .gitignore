@@ -147,8 +147,9 @@ data/
 # model
 model/
 
-# output
+# artifacts
 output/
+artifacts/
 
 # Mac OS-specific storage files
 .DS_Store

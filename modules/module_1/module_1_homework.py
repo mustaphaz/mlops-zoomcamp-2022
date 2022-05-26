@@ -40,6 +40,11 @@ def validate(model: Pipeline, _df: DataFrame) -> float:
     return mean_squared_error(y, y_pred, squared=False)
 
 
+def print_answers():
+    for k, v in ANSWERS.items():
+        print(f'{k} \n\t{v}')
+
+
 if __name__ == '__main__':
     train_data = _load_data(TRAIN_SET)
     validation_data = _load_data(VALIDATION_SET)
@@ -50,5 +55,4 @@ if __name__ == '__main__':
     ANSWERS["Q5: What's the RMSE on train?"] = validate(model, train_data)
     ANSWERS["Q5: What's the RMSE on validation?"] = validate(model, validation_data)
 
-    for k, v in ANSWERS.items():
-        print(f'{k} \n\t{v}')
+    print_answers()

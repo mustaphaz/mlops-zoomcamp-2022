@@ -2,8 +2,12 @@ import argparse
 import os
 import pickle
 
+import mlflow
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error
+
+MLFLOW_TRACKING_URI = "http://127.0.0.1:5001"
+mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
 
 
 def load_pickle(filename: str):
@@ -12,7 +16,6 @@ def load_pickle(filename: str):
 
 
 def run(data_path):
-
     X_train, y_train = load_pickle(os.path.join(data_path, "train.pkl"))
     X_valid, y_valid = load_pickle(os.path.join(data_path, "valid.pkl"))
 
@@ -24,13 +27,15 @@ def run(data_path):
 
 
 if __name__ == '__main__':
-
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--data_path",
-        default="./output",
+        default="../output",
         help="the location where the processed NYC taxi trip data was saved."
     )
     args = parser.parse_args()
 
-    run(args.data_path)
+    mlflow.sklearn.autolog()
+
+    with mlflow.start_run():
+        run(args.data_path)
