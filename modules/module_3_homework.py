@@ -127,4 +127,5 @@ DeploymentSpec(
     schedule=CronSchedule(cron='0 9 15 * *', timezone="Europe/Amsterdam"),
     flow_runner=SubprocessFlowRunner(),
     tags=['ml']
-)¬
+)
+
